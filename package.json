@@ -1,0 +1,22 @@
+{
+  "name": "bulky-renamer",
+  "version": "1.0.0",
+  "description": "Bulk rename files in a directory using the path and fs Node.js modules.",
+  "main": "bulk-rename.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "bulk",
+    "rename",
+    "files",
+    "path",
+    "fs",
+    "directory"
+  ],
+  "author": "jihoonj",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^11.0.0"
+  }
+}
