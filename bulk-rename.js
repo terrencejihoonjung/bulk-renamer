@@ -23,18 +23,18 @@ const {
 } = program.opts();
 
 // Check if input exists
-if (!fs.existsSync(input)) {
+if (!fs.existsSync(directory)) {
   console.error("Input directory does not exist");
   process.exit(1);
 }
 
 // Rename File
 function renameFile(filePath, search, replace) {
-  const directory = path.dirname(filePath); // extracts directory portion of file path, excluding filename itself
+  const dir = path.dirname(filePath); // extracts directory portion of file path, excluding filename itself
   const fileName = path.basename(filePath); // extracts base name (last portion) of a file path
 
   const newFileName = fileName.replace(search, replace); // looks for substring "search" and replaces it with "replace"
-  const newFilePath = path.join(directory, newFileName); // create new file path for newly named file
+  const newFilePath = path.join(dir, newFileName); // create new file path for newly named file
 
   try {
     fs.rename.Sync(filePath, newFilePath); // renames file using old file path and new file path
@@ -45,11 +45,11 @@ function renameFile(filePath, search, replace) {
 }
 
 // Bulk rename files in directory
-function renameFiles(directory, search, replace) {
-  const files = fs.readdirSync(directory); // scans directory's files
+function renameFiles(dir, search, replace) {
+  const files = fs.readdirSync(dir); // scans directory's files
 
   for (const file of files) {
-    const filePath = path.join(directory, file); // create file path
+    const filePath = path.join(dir, file); // create file path
     renameFile(filePath, search, replace);
   }
 }
