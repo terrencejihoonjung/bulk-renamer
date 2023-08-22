@@ -16,6 +16,9 @@
   ],
   "author": "jihoonj",
   "license": "ISC",
+  "bin": {
+    "rename-files": "bulk-rename.js"
+  },
   "dependencies": {
     "commander": "^11.0.0"
   }
