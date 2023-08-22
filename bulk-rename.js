@@ -9,12 +9,18 @@ const { program } = require("commander");
 program
   .version("1.0.0")
   .description("Bulk rename files in directory")
-  .requiredOption("-i, --input <path>", "Input directory containing files")
-  .option("-p, --prefix <prefix>", "Prefix for the new filenames")
+  .requiredOption("-p, --path <directory>", "Input directory containing files")
+  .option(
+    "-r, --replace <search> <replace>",
+    "Search and replace text in filenames"
+  )
   .parse(process.argv);
 
 // Parse command line arguments
-const { input, prefix } = program.opts();
+const {
+  directory: path,
+  replace: [search, replace],
+} = program.opts();
 
 // Check if input exists
 if (!fs.existsSync(input)) {
@@ -47,3 +53,5 @@ function renameFiles(directory, search, replace) {
     renameFile(filePath, search, replace);
   }
 }
+
+renameFiles(directory, search, replace);
