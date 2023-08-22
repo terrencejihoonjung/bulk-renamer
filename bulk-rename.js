@@ -39,3 +39,11 @@ function renameFile(filePath, search, replace) {
 }
 
 // Bulk rename files in directory
+function renameFiles(directory, search, replace) {
+  const files = fs.readdirSync(directory); // scans directory's files
+
+  for (const file of files) {
+    const filePath = path.join(directory, file); // create file path
+    renameFile(filePath, search, replace);
+  }
+}
