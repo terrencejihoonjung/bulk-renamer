@@ -23,5 +23,19 @@ if (!fs.existsSync(input)) {
 }
 
 // Rename File
+function renameFile(filePath, search, replace) {
+  const directory = path.dirname(filePath); // extracts directory portion of file path, excluding filename itself
+  const fileName = path.basename(filePath); // extracts base name (last portion) of a file path
+
+  const newFileName = fileName.replace(search, replace); // looks for substring "search" and replaces it with "replace"
+  const newFilePath = path.join(directory, newFileName); // create new file path for newly named file
+
+  try {
+    fs.rename.Sync(filePath, newFilePath); // renames file using old file path and new file path
+    console.log(`Renamed ${fileName} to ${newFileName}`);
+  } catch (error) {
+    console.error(`Error renaming ${fileName}: ${error.message}`);
+  }
+}
 
 // Bulk rename files in directory
