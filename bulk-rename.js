@@ -30,10 +30,12 @@ if (!fs.existsSync(dir)) {
 // Rename File
 function renameFile(filePath, search, replace) {
   const directory = path.dirname(filePath); // extracts directory portion of file path, excluding filename itself
-  const fileName = path.basename(filePath); // extracts base name (last portion) of a file path
+  const pFile = path.parse(filePath); //parse file path
+  const fileName = pFile.name;
+  const fileExt = pFile.ext;
 
   const newFileName = fileName.replace(search, replace); // looks for substring "search" and replaces it with "replace"
-  const newFilePath = path.join(directory, newFileName); // create new file path for newly named file
+  const newFilePath = path.join(directory, newFileName + fileExt); // create new file path for newly named file
 
   try {
     fs.renameSync(filePath, newFilePath); // renames file using old file path and new file path
