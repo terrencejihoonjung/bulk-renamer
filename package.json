@@ -1,6 +1,6 @@
 {
   "name": "bulky-renamer",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Bulk rename files in a directory using the path and fs Node.js modules.",
   "main": "bulk-rename.js",
   "scripts": {
